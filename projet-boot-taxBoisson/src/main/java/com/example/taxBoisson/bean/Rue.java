@@ -1,5 +1,6 @@
 package com.example.taxBoisson.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -9,13 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 @Entity
-public class Rue {
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+public class Rue  implements Serializable {
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nom;
 	@ManyToOne
 	private Quartier quartier;
-	@OneToMany
+	@OneToMany(mappedBy = "locale")
 	private List<Locale> locales;
 	public Long getId() {
 		return id;

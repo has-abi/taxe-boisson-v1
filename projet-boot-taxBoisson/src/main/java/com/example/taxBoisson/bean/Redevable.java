@@ -1,27 +1,33 @@
 package com.example.taxBoisson.bean;
 
-import java.util.List;
-import java.util.Locale;
+import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 
 @Entity
-public class Redevable {
+public class Redevable  implements Serializable {	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String nom;
+	private String identientant;
 	@ManyToOne
 	private TypeRedevable typeRedevable;
-	@OneToMany
-	private List<Locale> locales;
-	private String ref;  
+	
+	private String ref; 
+	
+	
+	public String getIdentientant() {
+		return identientant;
+	}
+	public void setIdentientant(String identientant) {
+		this.identientant = identientant;
+	}
 	public long getId() {
 		return id;
 	}
@@ -40,12 +46,7 @@ public class Redevable {
 	public void setTypeRedevable(TypeRedevable typeRedevable) {
 		this.typeRedevable = typeRedevable;
 	}
-	public List<Locale> getLocales() {
-		return locales;
-	}
-	public void setLocales(List<Locale> locales) {
-		this.locales = locales;
-	}
+
 	public String getRef() {
 		return ref;
 	}
@@ -54,12 +55,11 @@ public class Redevable {
 	}
 	
 	
-	public Redevable(long id, String nom, TypeRedevable typeRedevable, List<Locale> locales, String ref) {
+	public Redevable(long id, String nom, TypeRedevable typeRedevable, String ref) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.typeRedevable = typeRedevable;
-		this.locales = locales;
 		this.ref = ref;
 	}
 	
@@ -67,14 +67,6 @@ public class Redevable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	@Override
-	public String toString() {
-		return "Redevale [id=" + id + ", nom=" + nom + ", typeRedevable=" + typeRedevable + ", locales=" + locales
-				+ ", ref=" + ref + ", getId()=" + getId() + ", getNom()=" + getNom() + ", getTypeRedevable()="
-				+ getTypeRedevable() + ", getLocales()=" + getLocales() + ", getRef()=" + getRef() + ", getClass()="
-				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
-	}
-	
 	
 	
 }

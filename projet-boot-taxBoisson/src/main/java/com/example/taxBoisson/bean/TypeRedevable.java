@@ -1,5 +1,6 @@
 package com.example.taxBoisson.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -10,21 +11,14 @@ import javax.persistence.OneToMany;
 
 
 @Entity
-public class TypeRedevable {
+public class TypeRedevable  implements Serializable {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String libelle;
-	@OneToMany
-	private List<Redevable> redevables;
+
 	
-	public List<Redevable> getRedevables() {
-		return redevables;
-	}
-	public void setRedevables(List<Redevable> redevables) {
-		this.redevables = redevables;
-	}
 	public long getId() {
 		return id;
 	}
@@ -38,16 +32,7 @@ public class TypeRedevable {
 		this.libelle = libelle;
 	}
 	
-	@Override
-	public String toString() {
-		return "TypeRedevable [id=" + id + ", libelle=" + libelle + ", redevables=" + redevables + "]";
-	}
-	public TypeRedevable(long id, String libelle, List<Redevable> redevables) {
-		super();
-		this.id = id;
-		this.libelle = libelle;
-		this.redevables = redevables;
-	}
+	
 	public TypeRedevable() {
 		super();
 		// TODO Auto-generated constructor stub
