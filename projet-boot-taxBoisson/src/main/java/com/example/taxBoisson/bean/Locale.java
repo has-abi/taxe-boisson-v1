@@ -10,8 +10,12 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Locale implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String reference;
 	@ManyToOne
